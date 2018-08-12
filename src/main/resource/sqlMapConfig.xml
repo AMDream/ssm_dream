@@ -1,0 +1,22 @@
+<?mapping version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--启用缓存-->
+        <!--<setting name="cacheEnabled" value="true"/>-->
+        <!--允许JDBC支持生成的键-->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!--延迟加载，关联对象延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+    <!--别名配置-->
+    <typeAliases>
+        <package name="com.dream.pojo"/>
+    </typeAliases>
+    <!--指定映射器路径-->
+    <mappers>
+        <mapper resource="com/dream/mapping/RoleMapper.xml"/>
+    </mappers>
+</configuration>

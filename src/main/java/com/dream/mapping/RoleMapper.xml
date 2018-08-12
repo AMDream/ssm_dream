@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dream.mapper.RoleMapper">
+
+    <select id="selectRoleById" parameterType="int" resultType="role">
+        select id,role_name as roleName,note from role
+        where id = #{id}
+    </select>
+
+    <delete id="deleteBatch" parameterType="int">
+        delete from role
+        where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <insert id="insertRole" parameterType="role">
+        insert into role(role_name,note)
+        values (#{roleName},#{note})
+    </insert>
+</mapper>
