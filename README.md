@@ -1,0 +1,8 @@
+# ssm_dream
+The first ssm demo
+#### 搭建SSM框架，其中自定义bean使用注解，第三方bean选择xml配置
+
+配置了两种视图解析器，用于解析jsp和html
+InternalResourceViewResolver：这是一个最常用的解析器。通常使用它指定渲染对象为jsp页面。
+FreeMarkerViewResolver：Spring与Freemarker整合需要用到的解析器
+
