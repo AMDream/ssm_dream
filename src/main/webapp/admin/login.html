@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Params</title>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script>
+        function sendJsonData() {
+            var data = {
+                roleName:'role',
+                note:'note'
+            };
+            $.ajax({
+                type:'POST',
+                url:"/params/findRoles",
+                dataType:'json',
+                data:JSON.stringify(data),
+                async : false,
+                // 此处需要告知传递参数类型为JSON，不能缺少
+                // 如果没有contentType   415错误
+                contentType : 'application/json',
+                success:function(data){
+                    alert(data);
+                },
+                error:function () {
+                    alert('error');
+                }
+            });
+        }
+        function sentListDataJSON() {
+            var ids = [1,2,3];
+            $.ajax({
+                type:'POST',
+                url:"/params/deleteRoles",
+                dataType:'json',
+                data:JSON.stringify(ids),
+                async : false,
+                // 此处需要告知传递参数类型为JSON，不能缺少
+                // 如果没有contentType   415错误
+                contentType : 'application/json',
+                success:function(data){
+                    alert(data);
+                },
+                error:function () {
+                    alert('error');
+                }
+            });
+        }
+
+
+    </script>
+</head>
+<body>
+    <a href="/params/getRole/1">获取ID为1的Role</a>
+    <hr>
+    <button onclick="sendJsonData()">发送JSON数据</button>
+    <hr>
+    <button onclick="sentListDataJSON()">发送JSON列表数据</button>
+    <hr>
+
+    <!--<form id="form" action="/params/commonParams">-->
+    <!--<form id="form" action="/params/commonParamsPojo">-->
+    <!--<form id="form" action="/params/requestParam">-->
+    <form id="form" action=""></form>
+        <div>
+            角色名称：<input type="text" id="roleName" name="roleName">
+        </div>
+        <div>
+            备注：<input type="text" id="note" name="note">
+        </div>
+        <input type="submit" id="submit" value="提交">
+    </form>
+    <script>
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                console.log($('#roleName').val());
+                console.log($('#note').val());
+                console.log($('form').serialize());
+                $.ajax({
+                    url:"/params/commonParamPojo2",
+                    data:$('form').serialize(),
+                    success:function(data){
+                    },
+                    error:function () {
+                        alert('error');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class RoleServiceImpl implements RoleService{
     @Autowired
@@ -26,5 +28,10 @@ public class RoleServiceImpl implements RoleService{
     @Transactional(propagation = Propagation.REQUIRES_NEW,isolation = Isolation.DEFAULT)
     public int insertRole(Role role) {
         return roleMapper.insertRole(role);
+    }
+
+    @Override
+    public List<Role> getRoles() {
+        return roleMapper.getRoles();
     }
 }

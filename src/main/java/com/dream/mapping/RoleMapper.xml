@@ -19,4 +19,8 @@
         insert into role(role_name,note)
         values (#{roleName},#{note})
     </insert>
+
+    <select id="getRoles" resultType="role">
+        select * from role
+    </select>
 </mapper>
