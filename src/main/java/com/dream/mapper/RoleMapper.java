@@ -13,4 +13,5 @@ public interface RoleMapper {
     int insertRole(Role role);
 
     List<Role> getRoles();
+    int deleteRole(Integer id);
 }

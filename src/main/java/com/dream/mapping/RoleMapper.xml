@@ -15,7 +15,7 @@
         </foreach>
     </delete>
 
-    <insert id="insertRole" parameterType="role">
+    <insert id="insertRole" parameterType="role"  useGeneratedKeys="true" keyProperty="id">
         insert into role(role_name,note)
         values (#{roleName},#{note})
     </insert>
@@ -23,4 +23,9 @@
     <select id="getRoles" resultType="role">
         select * from role
     </select>
+
+    <delete id="deleteRole" parameterType="int">
+        delete from role
+        where id = #{id}
+    </delete>
 </mapper>

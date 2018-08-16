@@ -1,6 +1,8 @@
 package com.dream.pojo;
 
-public class Role {
+import java.io.Serializable;
+
+public class Role implements Serializable{
     private Integer id;
     private String roleName;
     private String note;

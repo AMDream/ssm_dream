@@ -22,7 +22,7 @@ public class RoleListServiceImpl implements RoleListService{
         int cnt = 0;
         for(Role role : roles){
             System.out.println(role);
-            cnt += rs.insertRole(role);
+            rs.insertRole(role);
         }
         return cnt;
     }
