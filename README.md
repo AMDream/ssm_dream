@@ -9,3 +9,8 @@ FreeMarkerViewResolver：Spring与Freemarker整合需要用到的解析器<br>
 <br>
 与用户交互的页面最好为html，可以不走视图解析器，响应速度会更快
 
+<br>
+redis版本2.6.0
+spring-data-redis版本1.4.2.RELEASE
+spring版本4.3.10.RELEASE
+反正有可能版本问题出现莫名其妙的错误
