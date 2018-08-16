@@ -20,7 +20,55 @@
                         http://www.springframework.org/schema/cache
                         http://www.springframework.org/schema/cache/spring-cache.xsd">
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!-- 视图解析器1:html视图解析器 必须先配置freemarkerConfig,注意html是没有prefix前缀属性的 -->
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="freemarkerSettings">
+            <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+                <property name="properties">
+                    <props>
+                        <prop key="default_encoding">utf-8</prop>
+                        <prop key="output_encoding">utf-8</prop>
+                    </props>
+                </property>
+            </bean>
+        </property>
+        <property name="templateLoaderPath" value="/WEB-INF/htmls/"/>
+    </bean>
+    <bean id="htmlViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="suffix" value=".html"/>
+        <property name="order" value="0"/>
+        <property name="contentType" value="text/html;charset=UTF-8" />
+    </bean>
+
+    <!--使用requestBody注解，接收JSON参数-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>application/json;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!--使用默认的Servlet来响应静态文件-->
+    <mvc:default-servlet-handler/>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--拦截所有的controller-->
+            <mvc:mapping path="/**"/>
+            <bean class="com.dream.config.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

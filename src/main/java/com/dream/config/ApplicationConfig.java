@@ -1,12 +1,10 @@
 package com.dream.config;
 
-import com.dream.aspect.RoleAspect;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.*;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/**
- *
- */
+
 @Configuration
 @EnableAspectJAutoProxy  //自动代理
 @EnableTransactionManagement  //开启事务管理

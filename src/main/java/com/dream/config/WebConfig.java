@@ -5,9 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-/**
- *
- */
 @Configuration
 @ComponentScan(basePackages = {"com.dream.controller"})
 @ImportResource(value = "classpath:spring-mvc.xml")
